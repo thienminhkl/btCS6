@@ -13,10 +13,11 @@ function Validation() {
         return true;
     }
 
-    this.checkID = function (valueInput, spanId, message, empArr) {
+    this.checkID = function (valueInput, spanId, message, perArr) {
         var isExsist = false;
-        isExsist = empArr.some(function (emp) {
-            return valueInput === emp.acc
+        isExsist = perArr.some(function (emp) {
+            return valueInput === emp.id
+
         })
 
         if (isExsist) {
