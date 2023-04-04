@@ -181,6 +181,7 @@ getELE("btnAddOn").onclick = addNewObj;
 function able() {
     getELE("id").disabled = false;
     getELE("btnUpdate").style.display = 'none';
+    getELE("btnAddOn").style.display = 'block';
     getELE('qldt').reset();
 
 }
@@ -190,6 +191,7 @@ getELE("btnAdd").addEventListener('click', () => { able() })
 
 function detail(id) {
     getELE("btnUpdate").style.display = 'block';
+    getELE("btnAddOn").style.display = 'none';
 
     var index = perList.findIndexPerson(id);
     if (index != -1) {
