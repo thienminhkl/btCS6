@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- BT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card text-center">
+            <div class="card-header myCardHeader">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-left text-primary font-weight-bold">Quản lý học viện nghiên cứu & giảng dạy</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" id="btnAdd" data-toggle="modal" data-target="#myModal"><i
+                                class="fa fa-plus mr-3"></i>Add person</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Tìm đối tượng" id="searchName">
+                            <div class="input-group-prepend">
+                                <button class="input-group-text" id="btnFindName"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-hover myTable">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>
+                                Mã
+
+                            </th>
+                            <th>Họ tên
+                                <i class="fa fa-arrow-up" id="sort-ins"></i>
+                                <i class="fa fa-arrow-down" id="sort-dec"></i>
+                            </th>
+
+
+                            <th>Địa chỉ</th>
+
+                            <th>Email</th>
+                            <th>
+                                Type
+                                <select class="form-control w-50 ml-2 d-inline" id="type">
+                                    <option value="all">All</option>
+                                    <option value="student">Student</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="customer">Customer</option>
+                                </select>
+                            </th>
+                            <th><em class="fa fa-cog"></em></th>
+                            <th><i class="fa-solid fa-pen"></i></th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tableList">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer -->
+            <div class="card-footer myCardFooter">
+                <nav>
+                    <ul class="pagination justify-content-center">
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="container py-5">
+                        <h2 class="pb-3">Thêm đối tượng</h2>
+                        <form id="qldt">
+                            <div class="border p-3 rounded">
+                                <div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" placeholder="Họ tên">
+                                        <span id="name-al"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="address" placeholder="Địa chỉ">
+                                        <span id="address-al"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="id" placeholder="Mã">
+                                        <span id="id-al"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="email" placeholder="Email">
+                                        <span id="email-al"></span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control" id="kind">
+                                            <option value="">Lựa chọn đối tượng</option>
+                                            <option value="student">Student</option>
+                                            <option value="teacher">Teacher</option>
+                                            <option value="customer">Customer</option>
+                                        </select>
+                                        <span id="kind-al"></span>
+
+                                    </div>
+                                    <div id="list"></div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" id="modal-footer">
+                    <button id="btnAddOn" type="button" class="btn btn-warning">Thêm</button>
+                    <button id="btnUpdate" type="button" class="btn btn-info">Cập nhật</button>
+                    <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+        <script src="./js/Validation.js"></script>
+    <script src="./js/ListPerson.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
