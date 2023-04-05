@@ -144,8 +144,7 @@ function addNewObj() {
     isValid &= validation.checkEmpty(name, "name-al", "Tên nhân viên không được để trống") && validation.checkName(name, "name-al", "Tên nhân viên phải là chữ");
     isValid &= validation.checkEmpty(email, "email-al", "Email không được để trống") && validation.checkEmail(email, "email-al", "Email không hợp lệ");
     isValid &= validation.checkEmpty(address, "address-al", "Mật khẩu không được để trống");
-
-
+    isValid &= validation.checkSelect("kind", "kind-al", "Chưa chọn loại đối tượng");
 
     if (isValid) {
         if (kind == 'student') {
@@ -257,8 +256,9 @@ function update() {
         isValid &= validation.checkEmpty(rating, "rating-al", "Đánh giá không được để trống");
     }
 
-    isValid &= validation.checkEmpty(id, "id-al", "Tài khoản không được để trống")
-    isValid &= validation.checkEmpty(name, "name-al", "Tên nhân viên không được để trống") && validation.checkName(name, "name-al", "Tên nhân viên phải là chữ");
+    isValid &= validation.checkEmpty(id, "id-al", "Tài khoản không được để trống");
+    isValid &= validation.checkSelect("kind", "kind-al", "Chưa chọn loại đối tượng");
+    isValid &= validation.checkEmpty(name, "name-al", "Tên không được để trống") && validation.checkName(name, "name-al", "Tên phải là chữ");
     isValid &= validation.checkEmpty(email, "email-al", "Email không được để trống") && validation.checkEmail(email, "email-al", "Email không hợp lệ");
     isValid &= validation.checkEmpty(address, "address-al", "Mật khẩu không được để trống");
 

@@ -95,7 +95,6 @@ function Validation() {
 
     this.checkSelect = function (selectID, spanId, message) {
         var indexOption = document.getElementById(selectID).selectedIndex;
-
         if (indexOption != 0) {
             //Hợp lệ
             document.getElementById(spanId).style.display = "none";
@@ -104,6 +103,7 @@ function Validation() {
 
         } else {
             //! => không hợp lệ 
+            console.log(1)
             document.getElementById(spanId).style.display = "block";
             document.getElementById(spanId).innerHTML = message;
             return false;
